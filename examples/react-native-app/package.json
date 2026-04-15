@@ -1,0 +1,6 @@
+{
+  "name": "security-sdk-example-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Create a React Native app (e.g. npx @react-native-community/cli init) and add @banking/mobile-security-sdk as a file/workspace dependency."
+}

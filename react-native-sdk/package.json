@@ -1,0 +1,35 @@
+{
+  "name": "@banking/mobile-security-sdk",
+  "version": "0.1.0",
+  "description": "Banking-grade mobile security SDK for React Native (bridge only; crypto stays native).",
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "react-native": "src/index.ts",
+  "source": "src/index.ts",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "react-native-security-sdk.podspec",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/check-no-fetch.mjs && tsc -p tsconfig.build.json",
+    "clean": "rm -rf lib",
+    "prepare": "npm run build"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-native": ">=0.73.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "react": "18.3.1",
+    "react-native": "0.76.5",
+    "typescript": "^5.6.0"
+  }
+}

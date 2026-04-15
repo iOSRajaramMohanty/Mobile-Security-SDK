@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: Mobile Security SDK — Secure Gateway API
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+  /v1/secure:
+    post:
+      summary: Authenticated, encrypted ingress (placeholder)
+      responses:
+        '501':
+          description: Not implemented

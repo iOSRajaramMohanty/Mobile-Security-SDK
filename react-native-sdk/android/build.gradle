@@ -1,0 +1,56 @@
+buildscript {
+    ext.safeExtGet = { String prop, def fallback ->
+        rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+def reactNativeAndroidDir = [
+    file("${rootDir}/../node_modules/react-native/android"),
+    file("${rootDir}/../../node_modules/react-native/android"),
+].find { it.exists() }
+
+repositories {
+    google()
+    mavenCentral()
+    if (reactNativeAndroidDir != null) {
+        maven { url(reactNativeAndroidDir) }
+    }
+}
+
+android {
+    namespace 'com.bankingsdk.security.rn'
+    compileSdk safeExtGet('compileSdkVersion', 35)
+
+    defaultConfig {
+        minSdk safeExtGet('minSdkVersion', 24)
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += file("${rootDir}/../../android-sdk/security-sdk/src/main/kotlin")
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.9.1'
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    if (reactNativeAndroidDir != null) {
+        implementation 'com.facebook.react:react-android'
+    } else {
+        compileOnly 'com.facebook.react:react-android:+'
+    }
+}

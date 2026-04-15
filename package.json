@@ -1,0 +1,30 @@
+{
+  "name": "mobile-security-sdk-monorepo",
+  "private": true,
+  "workspaces": [
+    "react-native-sdk",
+    "backend-gateway",
+    "examples/react-native-app"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "npm run build:rn && npm run build:backend",
+    "build:rn": "npm run build -w @banking/mobile-security-sdk",
+    "build:backend": "npm run build -w @banking/backend-gateway",
+    "validate": "node scripts/validate-phase1.mjs",
+    "validate:phase2": "node scripts/validate-phase2.mjs",
+    "validate:phase3": "node scripts/validate-phase3.mjs",
+    "validate:phase4": "node scripts/validate-phase4.mjs",
+    "validate:production": "node scripts/validate-production.mjs",
+    "validate:bank-grade": "node scripts/validate-bank-grade.mjs",
+    "test:stepup-race": "node scripts/test-stepup-race.mjs",
+    "test:stepup-attestation": "node scripts/test-stepup-attestation.mjs",
+    "pentest:suite": "node scripts/pentest-suite.mjs",
+    "package:sdks": "node scripts/package-sdks.mjs"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
