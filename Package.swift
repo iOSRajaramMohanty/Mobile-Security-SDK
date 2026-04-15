@@ -13,12 +13,12 @@ let package = Package(
     targets: [
         .target(
             name: "SecuritySDK",
-            path: "Sources/SecuritySDK"
+            path: "ios-sdk/Sources/SecuritySDK"   // ✅ CORRECT
         ),
         .testTarget(
             name: "SecuritySDKTests",
             dependencies: ["SecuritySDK"],
-            path: "Tests/SecuritySDKTests"
+            path: "ios-sdk/Tests/SecuritySDKTests"   // ✅ CORRECT
         ),
     ]
 )
